@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import cold from "./img/snowflake.png";
 import "./index.css";
 
 function Room() {
   const [isLit, setLit] = useState(true);
-  const [temperature, setTemperature] = useState(6);
-
+  let [temperature, setTemperature] = useState(0);
+  const [date, setDate] = useState(Date());
   const brightness = isLit ? "lit" : "dark";
 
   return (
@@ -21,20 +20,30 @@ function Room() {
       <br />
       <h1>{temperature}</h1>
       <br />
+      <h2>{date}</h2>
       <OnButton
         setTemperature={setTemperature}
         temperature={temperature}
       ></OnButton>
-      <ImageHandler temperature={temperature}></ImageHandler>
       <br />
       <OffButton
         setTemperature={setTemperature}
         temperature={temperature}
       ></OffButton>
+      <br />
+      <ImageHandler temperature={temperature}></ImageHandler>
+      <br />
+      <div>
+        <button onClick={() => setTemperature(-temperature)}>Flip temp</button>
+      </div>
     </div>
   );
 }
-
+/*
+function Date() {
+  return <div>{d}</div>;
+}
+*/
 function OnButton({ setTemperature, temperature }) {
   return <button onClick={() => setTemperature((temperature += 1))}>+</button>;
 }
@@ -44,25 +53,17 @@ function OffButton({ setTemperature, temperature }) {
 }
 
 function ImageHandler({ temperature }) {
-  let imageUrl = null;
+  let imageURL;
 
-  if (temperature <= 5) {
-    imageUrl = { cold };
+  if (temperature < 0) {
+    imageURL = "./img/snowflake.png";
+  } else if (temperature >= 0 && temperature <= 5) {
+    imageURL = "./img/medium.png";
+  } else {
+    imageURL = "./img/sun.png";
   }
-
-  return <img src={imageUrl}></img>;
+  return <img src={imageURL} alt={imageURL} width="200px"></img>;
 }
-
-/* function ImageHandler({ temperature }) {
-  let imageUrl = null;
-
-  if (temperature <= 5) {
-    imageUrl = { cold };
-  }
-
-  return <img src={imageUrl}></img>;
-}
-*/
 
 ReactDOM.render(
   <div className="room">
