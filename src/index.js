@@ -53,6 +53,17 @@ function ImageHandler({ temperature }) {
   return <img src={imageUrl}></img>;
 }
 
+/* function ImageHandler({ temperature }) {
+  let imageUrl = null;
+
+  if (temperature <= 5) {
+    imageUrl = { cold };
+  }
+
+  return <img src={imageUrl}></img>;
+}
+*/
+
 ReactDOM.render(
   <div className="room">
     <Room />
