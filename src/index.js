@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
+let data = require("./sampledata.json");
+
 function Room() {
   const [isLit, setLit] = useState(true);
   const [temperature, setTemperature] = useState(0);
-  const [date, setDate] = useState(Date());
+  const [date] = useState(Date());
   const brightness = isLit ? "lit" : "dark";
 
+  dataHandler();
   return (
     <div className={`room ${brightness}`}>
       The room is {isLit ? "lit" : "dark"}
@@ -39,11 +42,9 @@ function Room() {
     </div>
   );
 }
-/*
-function Date() {
-  return <div>{d}</div>;
+function dataHandler() {
+  console.log(data.jobs[0].user);
 }
-*/
 function OnButton({ setTemperature, temperature }) {
   return <button onClick={() => setTemperature((temperature += 1))}>+</button>;
 }

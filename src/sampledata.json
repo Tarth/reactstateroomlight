@@ -1,0 +1,49 @@
+{
+  "jobs": [
+    {
+      "user": "Mikkel",
+      "startdate": 15,
+      "startmonth": 6,
+      "startyear": 2020,
+      "enddate": 16,
+      "endmonth": 6,
+      "endyear": 2020
+    },
+    {
+      "user": "Mikkel",
+      "startdate": 16,
+      "startmonth": 6,
+      "startyear": 2020,
+      "enddate": 19,
+      "endmonth": 6,
+      "endyear": 2020
+    },
+    {
+      "user": "Frank",
+      "startdate": 17,
+      "startmonth": 6,
+      "startyear": 2020,
+      "enddate": 21,
+      "endmonth": 6,
+      "endyear": 2020
+    },
+    {
+      "user": "Torben",
+      "startdate": 15,
+      "startmonth": 6,
+      "startyear": 2020,
+      "enddate": 20,
+      "endmonth": 6,
+      "endyear": 2020
+    },
+    {
+      "user": "Kim",
+      "startdate": 15,
+      "startmonth": 6,
+      "startyear": 2020,
+      "enddate": 15,
+      "endmonth": 6,
+      "endyear": 2020
+    }
+  ]
+}
