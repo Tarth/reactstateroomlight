@@ -4,7 +4,7 @@ import "./index.css";
 
 function Room() {
   const [isLit, setLit] = useState(true);
-  let [temperature, setTemperature] = useState(0);
+  const [temperature, setTemperature] = useState(0);
   const [date, setDate] = useState(Date());
   const brightness = isLit ? "lit" : "dark";
 
