@@ -10,7 +10,7 @@ function Room() {
   const [date] = useState(Date());
   const brightness = isLit ? "lit" : "dark";
 
-  dataHandler();
+  DataHandler();
   return (
     <div className={`room ${brightness}`}>
       The room is {isLit ? "lit" : "dark"}
@@ -39,15 +39,15 @@ function Room() {
       <div>
         <button onClick={() => setTemperature(-temperature)}>Flip temp</button>
       </div>
-      <h2>
-        <dataHandler></dataHandler>
-      </h2>
-    </div>
+       
+      </div>
   );
 }
-function dataHandler() {
-  return data.jobs[0].user;
-}
+
+function DataHandler() {
+  console.log(data.jobs[0].user)
+} 
+
 function OnButton({ setTemperature, temperature }) {
   return <button onClick={() => setTemperature((temperature += 1))}>+</button>;
 }
