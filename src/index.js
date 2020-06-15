@@ -39,11 +39,14 @@ function Room() {
       <div>
         <button onClick={() => setTemperature(-temperature)}>Flip temp</button>
       </div>
+      <h2>
+        <dataHandler></dataHandler>
+      </h2>
     </div>
   );
 }
 function dataHandler() {
-  console.log(data.jobs[0].user);
+  return data.jobs[0].user;
 }
 function OnButton({ setTemperature, temperature }) {
   return <button onClick={() => setTemperature((temperature += 1))}>+</button>;
