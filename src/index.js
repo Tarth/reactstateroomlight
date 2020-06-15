@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-let data = require("./sampledata.json");
-
 function Room() {
+  const [items, setItems] = useState(null); 
   const [isLit, setLit] = useState(true);
   const [temperature, setTemperature] = useState(0);
   const [date] = useState(Date());
   const brightness = isLit ? "lit" : "dark";
 
-  DataHandler();
+  if (items === null){
+    DataHandler(setItems);
+  }
+
+  
   return (
     <div className={`room ${brightness}`}>
       The room is {isLit ? "lit" : "dark"}
@@ -39,13 +42,30 @@ function Room() {
       <div>
         <button onClick={() => setTemperature(-temperature)}>Flip temp</button>
       </div>
-       
-      </div>
+    </div>
   );
 }
 
-function DataHandler() {
-  console.log(data.jobs[0].user)
+function DataHandler(setItems) {
+  let data = require("./sampledata.json");
+  let jobdata = [];
+  
+  for (let i = 0; i < data.jobs.length; i++){
+    let username = data.jobs[i].user;
+    let startdate = data.jobs[i].startdate;
+    let startmonth = data.jobs[i].startmonth;
+    let startyear = data.jobs[i].startyear;
+    let enddate = data.jobs[i].enddate;
+    let endmonth = data.jobs[i].endmonth;
+    let endyear = data.jobs[i].endyear;
+    
+    let startdato = new Date(startyear, startmonth, startdate);
+    let slutdato = new Date(endyear, endmonth, enddate);
+
+    let job = {username: username, start: startdato, end: slutdato} ;
+    jobdata.push(job);
+  }
+  setItems(jobdata);
 } 
 
 function OnButton({ setTemperature, temperature }) {
